@@ -1,0 +1,452 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.brand-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.brand-logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #daa520, #b8860b);
+    border: 3px solid #8b4513;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4);
+}
+
+.brand-text {
+    font-size: 1.3em;
+    color: #daa520;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+}
+
+.card {
+    background: rgba(20, 10, 5, 0.95);
+    border: 2px solid #8b4513;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: #daa520;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+label {
+    font-weight: bold;
+    color: #daa520;
+    min-width: 150px;
+}
+
+input[type="time"] {
+    padding: 10px 15px;
+    border: 2px solid #8b4513;
+    background: rgba(40, 25, 15, 0.8);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1em;
+    flex: 1;
+    min-width: 150px;
+}
+
+input[type="time"]:focus {
+    outline: none;
+    border-color: #daa520;
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-sync {
+    background: linear-gradient(135deg, #daa520, #b8860b);
+    color: #000;
+    flex: 1;
+    min-width: 150px;
+}
+
+.btn-sync:hover {
+    background: linear-gradient(135deg, #ffd700, #daa520);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #8b4513, #654321);
+    color: #fff;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-reset:hover {
+    background: linear-gradient(135deg, #a0522d, #8b4513);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.4);
+}
+
+.sync-time {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.stat-box {
+    background: rgba(40, 25, 15, 0.8);
+    border: 1px solid #8b4513;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    border-color: #daa520;
+    box-shadow: 0 4px 12px rgba(218, 165, 32, 0.2);
+}
+
+.label {
+    color: #aaa;
+    font-size: 0.85em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.game-time,
+.real-time,
+.elapsed-real,
+.elapsed-game {
+    font-size: 2em;
+    font-weight: bold;
+    color: #daa520;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Courier New', monospace;
+}
+
+.info {
+    background: rgba(60, 40, 20, 0.5);
+    border-left: 4px solid #daa520;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.info p {
+    margin: 8px 0;
+    color: #ddd;
+}
+
+.info strong {
+    color: #daa520;
+}
+
+hr.divider {
+    border: none;
+    border-top: 1px solid #8b4513;
+    margin: 25px 0;
+    opacity: 0.5;
+}
+
+.section-title {
+    text-align: center;
+    color: #daa520;
+    margin: 20px 0 20px 0;
+    font-size: 1.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.timers-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.timer-box {
+    background: rgba(40, 25, 15, 0.8);
+    border: 2px solid #8b4513;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.timer-box:hover {
+    border-color: #daa520;
+    box-shadow: 0 4px 12px rgba(218, 165, 32, 0.2);
+}
+
+.timer-box.running {
+    border-color: #ff6b6b;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.timer-box.finished {
+    border-color: #51cf66;
+    box-shadow: 0 4px 12px rgba(81, 207, 102, 0.3);
+    background: rgba(40, 60, 25, 0.8);
+}
+
+.timer-title {
+    color: #aaa;
+    font-size: 0.85em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timer-display {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #daa520;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Courier New', monospace;
+    margin: 15px 0;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer-box.finished .timer-display {
+    color: #51cf66;
+    animation: pulse 0.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.timer-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-timer {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 0.85em;
+    min-width: 60px;
+}
+
+.btn-start {
+    background: linear-gradient(135deg, #51cf66, #40c057);
+    color: #000;
+}
+
+.btn-start:hover {
+    background: linear-gradient(135deg, #69db7c, #51cf66);
+}
+
+.btn-stop {
+    background: linear-gradient(135deg, #ff6b6b, #fa5252);
+    color: #fff;
+}
+
+.btn-stop:hover {
+    background: linear-gradient(135deg, #ff8787, #ff6b6b);
+}
+
+.btn-reset-timer {
+    background: linear-gradient(135deg, #a0522d, #8b4513);
+    color: #fff;
+}
+
+.btn-reset-timer:hover {
+    background: linear-gradient(135deg, #cd853f, #a0522d);
+}
+
+.fishing-alert {
+    background: rgba(81, 207, 102, 0.2);
+    border: 2px solid #51cf66;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.fishing-alert h3 {
+    color: #51cf66;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(81, 207, 102, 0.5);
+}
+
+.fishing-alert p {
+    color: #ddd;
+    margin: 0;
+}
+
+.brand-footer {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #8b4513;
+    color: #aaa;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+.brand-footer p {
+    margin: 0;
+    color: #daa520;
+}
+
+.brand-footer strong {
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(218, 165, 32, 0.5);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.btn-test {
+    background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+    color: #fff;
+    width: 100%;
+}
+
+.btn-test:hover {
+    background: linear-gradient(135deg, #748ffc, #4c6ef5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 110, 245, 0.4);
+}
+
+@media (max-width: 480px) {
+    .brand-header {
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .brand-logo {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+    }
+
+    .brand-text {
+        font-size: 1em;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .input-section {
+        flex-direction: column;
+    }
+
+    label {
+        min-width: auto;
+        width: 100%;
+    }
+
+    input[type="time"] {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .btn-sync {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .game-time,
+    .real-time,
+    .elapsed-real,
+    .elapsed-game {
+        font-size: 1.5em;
+    }
+
+    .timers-section {
+        grid-template-columns: 1fr;
+    }
+
+    .timer-display {
+        font-size: 2em;
+    }
+
+    .timer-controls {
+        flex-wrap: wrap;
+    }
+
+    .btn-timer {
+        flex: 0 1 calc(50% - 4px);
+    }
+}

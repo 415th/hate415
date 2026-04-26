@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDR2 Game Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="brand-header">
+            <div class="brand-logo">415</div>
+            <div class="brand-text">Game Tools</div>
+        </div>
+        
+        <div class="card">
+            <h1>🤠 RDR2 Game Clock</h1>
+            
+            <div class="input-section">
+                <label for="serverTime">Времени на сервере:</label>
+                <input 
+                    type="time" 
+                    id="serverTime" 
+                    placeholder="HH:MM"
+                    value="12:00"
+                >
+                <button id="syncBtn" class="btn btn-sync">Синхронизировать</button>
+            </div>
+
+            <div class="sync-time">
+                <small id="syncInfo">Время синхронизации: -</small>
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="label">Текущее время в игре</div>
+                    <div class="game-time" id="gameTime">12:00</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="label">Реальное время</div>
+                    <div class="real-time" id="realTime">00:00</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="label">Прошло в реале</div>
+                    <div class="elapsed-real" id="elapsedReal">0 сек</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="label">Прошло в игре</div>
+                    <div class="elapsed-game" id="elapsedGame">0 сек</div>
+                </div>
+            </div>
+
+            <div class="info">
+                <p><strong>Соотношение:</strong> 12 часов игры = 1 час реала</p>
+                <p><strong>Множитель:</strong> 1 реальная секунда = 12 игровых секунд</p>
+            </div>
+
+            <hr class="divider">
+
+            <h2 class="section-title">🎣 Таймеры для рыбалки</h2>
+            
+            <div class="timers-section">
+                <div class="timer-box" id="timerBox20">
+                    <div class="timer-title">Таймер 20 минут</div>
+                    <div class="timer-display" id="timer20">20:00</div>
+                    <div class="timer-controls">
+                        <button id="start20" class="btn btn-timer btn-start">Старт</button>
+                        <button id="stop20" class="btn btn-timer btn-stop">Стоп</button>
+                        <button id="reset20" class="btn btn-timer btn-reset-timer">Сброс</button>
+                    </div>
+                </div>
+
+                <div class="timer-box" id="timerBox30">
+                    <div class="timer-title">Таймер 30 минут</div>
+                    <div class="timer-display" id="timer30">30:00</div>
+                    <div class="timer-controls">
+                        <button id="start30" class="btn btn-timer btn-start">Старт</button>
+                        <button id="stop30" class="btn btn-timer btn-stop">Стоп</button>
+                        <button id="reset30" class="btn btn-timer btn-reset-timer">Сброс</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="fishing-alert" id="fishingAlert" style="display: none;">
+                <h3>🐟 Время рыбалки!</h3>
+                <p>В игре 20:00 (8 вечера) - идеальное время для рыбалки!</p>
+            </div>
+
+            <div class="button-group">
+                <button id="testAlarmBtn" class="btn btn-test">🔔 Проверить звук</button>
+                <button id="resetBtn" class="btn btn-reset">Сброс всего</button>
+            </div>
+
+            <div class="brand-footer">
+                <p>Made by <strong>415</strong> • RDR2 Game Tools</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
