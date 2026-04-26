@@ -7,100 +7,129 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="brand-header">
-            <div class="brand-logo">415</div>
-            <div class="brand-text">Game Tools</div>
-        </div>
-        
-        <div class="card">
-            <h1>🤠 RDR2 Game Clock</h1>
-            
-            <div class="input-section">
-                <label for="serverTime">Времени на сервере:</label>
-                <input 
-                    type="time" 
-                    id="serverTime" 
-                    placeholder="HH:MM"
-                    value="12:00"
-                >
-                <button id="syncBtn" class="btn btn-sync">Синхронизировать</button>
-            </div>
-
-            <div class="sync-time">
-                <small id="syncInfo">Время синхронизации: -</small>
-            </div>
-
-            <div class="stats">
-                <div class="stat-box">
-                    <div class="label">Текущее время в игре</div>
-                    <div class="game-time" id="gameTime">12:00</div>
+    <main class="dashboard">
+        <section class="hero-panel single-panel">
+            <div class="clock-stage">
+                <div class="stage-label">Игровое время</div>
+                <div class="analog-clock" aria-label="Аналоговые игровые часы">
+                    <div class="watch-crown"></div>
+                    <div class="watch-ring"></div>
+                    <div class="clock-number n12">12</div>
+                    <div class="clock-number n1">1</div>
+                    <div class="clock-number n2">2</div>
+                    <div class="clock-number n3">3</div>
+                    <div class="clock-number n4">4</div>
+                    <div class="clock-number n5">5</div>
+                    <div class="clock-number n6">6</div>
+                    <div class="clock-number n7">7</div>
+                    <div class="clock-number n8">8</div>
+                    <div class="clock-number n9">9</div>
+                    <div class="clock-number n10">10</div>
+                    <div class="clock-number n11">11</div>
+                    <div class="clock-hand hour-hand" id="hourHand"></div>
+                    <div class="clock-hand minute-hand" id="minuteHand"></div>
+                    <div class="alarm-marker timer-marker" id="customTimerMarker" title="Таймер"></div>
+                    <div class="alarm-marker nets-marker" id="netsMarker" title="Сети 07:30 / 19:30"></div>
+                    <div class="alarm-marker cycle-marker" id="cycleMarker0" title="Цикл сетей"></div>
+                    <div class="alarm-marker cycle-marker" id="cycleMarker1" title="Цикл сетей"></div>
+                    <div class="alarm-marker cycle-marker" id="cycleMarker2" title="Цикл сетей"></div>
+                    <div class="alarm-marker cycle-marker" id="cycleMarker3" title="Цикл сетей"></div>
+                    <div class="alarm-marker cycle-marker" id="cycleMarker4" title="Цикл сетей"></div>
+                    <div class="alarm-marker cycle-marker" id="cycleMarker5" title="Цикл сетей"></div>
+                    <div class="clock-center"></div>
+                    <div class="clock-sync-overlay" id="clockSyncOverlay">
+                        <div class="sync-card">
+                            <div class="label">Часы не синхронизированы</div>
+                            <h2>Введите время сервера</h2>
+                            <input type="time" id="initialServerTime" value="12:00">
+                            <button id="initialSyncBtn" class="btn btn-sync">Запустить часы</button>
+                            <button id="initialStartNightBtn" class="btn btn-cycle sync-night-btn">Стартую в 20:00</button>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="stat-box">
+                <div class="clock-hud top-left">
+                    <div class="label">Следующий звонок</div>
+                    <strong id="clockNextAlarm">Сети в 07:30</strong>
+                </div>
+                <div class="clock-hud top-right">
+                    <div class="label">Сейчас в игре</div>
+                    <strong class="hud-game-time" id="gameTime">12:00</strong>
+                </div>
+                <div class="clock-hud center-bottom">
                     <div class="label">Реальное время</div>
-                    <div class="real-time" id="realTime">00:00</div>
+                    <strong id="realTime">00:00</strong>
                 </div>
-
-                <div class="stat-box">
-                    <div class="label">Прошло в реале</div>
-                    <div class="elapsed-real" id="elapsedReal">0 сек</div>
+                <div class="clock-legend">
+                    <span><i class="legend-dot timer-dot"></i>Таймер</span>
+                    <span><i class="legend-dot nets-dot"></i>07:30 / 19:30</span>
+                    <span><i class="legend-dot cycle-dot"></i>Цикл</span>
                 </div>
-
-                <div class="stat-box">
-                    <div class="label">Прошло в игре</div>
-                    <div class="elapsed-game" id="elapsedGame">0 сек</div>
+                <div class="nets-alarm-box" id="netsAlarmBox">
+                    <label class="toggle-row" for="netsAlarmToggle">
+                        <input type="checkbox" id="netsAlarmToggle" checked>
+                        <span>Будильники сетей: 07:30 и 19:30</span>
+                    </label>
                 </div>
-            </div>
+                <div class="alarm-time-list">
+                    <div id="customTimerAlarmTime">Таймер прозвенит: --:--</div>
+                    <div id="netsCycleAlarmTime">Цикл сетей: --:--</div>
+                </div>
+                <div class="cycle-status" id="netsCycleStatus">Цикл сетей не запущен</div>
+                <div class="command-dock">
+                    <div class="dock-card cycle-dock">
+                        <div class="label">Ночной цикл</div>
+                        <strong id="clockCycleStatus">Не запущен</strong>
+                        <div class="cycle-actions">
+                            <button id="startNetsCycleBtn" class="mini-btn cycle-mini">С 20:00</button>
+                            <button id="stopNetsCycleBtn" class="mini-btn">Стоп</button>
+                        </div>
+                    </div>
 
-            <div class="info">
-                <p><strong>Соотношение:</strong> 12 часов игры = 1 час реала</p>
-                <p><strong>Множитель:</strong> 1 реальная секунда = 12 игровых секунд</p>
-            </div>
+                    <div class="dock-card timer-dock" id="customTimerBox">
+                        <div class="timer-topline">
+                            <div class="label">Таймер</div>
+                            <label class="custom-duration">
+                                <input type="number" id="customTimerMinutes" min="1" max="180" value="20">
+                                <span>мин</span>
+                            </label>
+                        </div>
+                        <div class="preset-row">
+                            <button id="preset20" class="preset-btn active" type="button">20</button>
+                            <button id="preset30" class="preset-btn" type="button">30</button>
+                            <button id="startCustomTimer" class="preset-btn timer-action" type="button">Старт</button>
+                            <button id="stopCustomTimer" class="preset-btn timer-action stop" type="button">Стоп</button>
+                        </div>
+                        <span id="customTimer" class="sr-only">20:00</span>
+                        <button id="resetCustomTimer" class="sr-only" type="button">Сброс</button>
+                    </div>
 
-            <hr class="divider">
-
-            <h2 class="section-title">🎣 Таймеры для рыбалки</h2>
-            
-            <div class="timers-section">
-                <div class="timer-box" id="timerBox20">
-                    <div class="timer-title">Таймер 20 минут</div>
-                    <div class="timer-display" id="timer20">20:00</div>
-                    <div class="timer-controls">
-                        <button id="start20" class="btn btn-timer btn-start">Старт</button>
-                        <button id="stop20" class="btn btn-timer btn-stop">Стоп</button>
-                        <button id="reset20" class="btn btn-timer btn-reset-timer">Сброс</button>
+                    <div class="dock-card utility-dock">
+                        <div class="label">Сервис</div>
+                        <div class="mini-sync">
+                            <input type="time" id="serverTime" value="12:00">
+                            <button id="syncBtn" class="mini-btn">↻</button>
+                        </div>
+                        <div class="quick-actions">
+                            <button id="testAlarmBtn" class="mini-btn sound-btn">Звук</button>
+                            <button id="resetBtn" class="mini-btn reset-mini">Сброс</button>
+                        </div>
+                        <small id="syncInfo">Время синхронизации: -</small>
                     </div>
                 </div>
-
-                <div class="timer-box" id="timerBox30">
-                    <div class="timer-title">Таймер 30 минут</div>
-                    <div class="timer-display" id="timer30">30:00</div>
-                    <div class="timer-controls">
-                        <button id="start30" class="btn btn-timer btn-start">Старт</button>
-                        <button id="stop30" class="btn btn-timer btn-stop">Стоп</button>
-                        <button id="reset30" class="btn btn-timer btn-reset-timer">Сброс</button>
-                    </div>
-                </div>
             </div>
+        </section>
 
-            <hr class="divider">
-
-            <div class="fishing-alert" id="fishingAlert" style="display: none;">
-                <h3>🐟 Время рыбалки!</h3>
-                <p>В игре 20:00 (8 вечера) - идеальное время для рыбалки!</p>
-            </div>
-
-            <div class="button-group">
-                <button id="testAlarmBtn" class="btn btn-test">🔔 Проверить звук</button>
-                <button id="resetBtn" class="btn btn-reset">Сброс всего</button>
-            </div>
-
-            <div class="brand-footer">
-                <p>Made by <strong>415</strong> • RDR2 Game Tools</p>
-            </div>
+        <div class="fishing-alert" id="fishingAlert" style="display: none;">
+            <h3>Время рыбалки</h3>
+            <p>В игре 20:00. Хороший момент для рыбалки.</p>
         </div>
-    </div>
+
+        <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+        <footer class="brand-footer">
+            415
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>
